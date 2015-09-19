@@ -22,7 +22,7 @@ class User extends Component {
         <div className={styles.info}>
           <div><span className={styles.keys}>Username:</span> {this.state.userData.login}</div>
           <div><span className={styles.keys}>Full Name:</span> {this.state.userData.name}</div>
-          <div><span className={styles.keys}>Link:</span> <a href={this.state.userData.url}>{this.state.userData.url}</a></div>
+          <div><span className={styles.keys}>Link:</span> <a href={this.state.userData.html_url}>{this.state.userData.html_url}</a></div>
           <div><span className={styles.keys}>Blog:</span> <a href={this.state.userData.blog}>{this.state.userData.blog}</a></div>
           <div><span className={styles.keys}>Location:</span> {this.state.userData.location}</div>
           <div><span className={styles.keys}>Email:</span> <a href={this.state.userData.email}>{this.state.userData.email}</a></div>
