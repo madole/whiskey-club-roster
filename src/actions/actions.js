@@ -8,7 +8,7 @@ export function nextSet(howMany) {
 
 export function fetchUser(user) {
   return function(dispatch) {
-    return  fetch(`https://api.github.com/users/${user}/repos`)
+    return  fetch(`https://api.github.com/users/${user}`)
       .then((res) => res.json())
       .then((json) => dispatch(recievedData(user, json)));
   }
