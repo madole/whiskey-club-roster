@@ -8,6 +8,7 @@ var compiler = webpack(config);
 
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
+  colors: true,
   publicPath: config.output.publicPath
 }));
 
