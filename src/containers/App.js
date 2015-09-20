@@ -24,7 +24,8 @@ class App extends Component {
 App.propTypes = {
   github: PropTypes.oneOfType([
     PropTypes.array,
-    PropTypes.object
+    PropTypes.object,
+    PropTypes.func
   ]),
   dispatch: PropTypes.func.isRequired
 };

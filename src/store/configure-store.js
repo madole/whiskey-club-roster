@@ -1,12 +1,15 @@
-import {createStore, applyMiddleware} from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from '../reducers';
+import { devTools } from 'redux-devtools'
 
 export default function configureStore(initalState) {
 
-  const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
-  const store = createStoreWithMiddleware(rootReducer, initalState);
+  const store = compose(
+    applyMiddleware(thunk),
+    devTools()
+  )(createStore)(rootReducer);
 
   //enable HMR on reducers
   if(module.hot) {

@@ -4,8 +4,10 @@ import styles from './user.scss'
 class User extends Component {
   onChange(store) {
     const storeState = store.getState();
-    const userData = storeState.github[0].userData;
-    this.setState({userData})
+    if(storeState && storeState.github && storeState.github[0]) {
+      const userData = storeState.github[0].userData;
+      this.setState({userData})
+    }
   }
 
   constructor(props, context) {
