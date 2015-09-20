@@ -3,9 +3,9 @@ import React, {Component} from 'react';
 class actionButton extends Component {
 
   render() {
-    const {onClick, buttonText} = this.props;
+    const {onClick, buttonText, className} = this.props;
     return (
-      <button onClick={onClick}>{buttonText}</button>
+      <button className={className} onClick={onClick}>{buttonText}</button>
     );
   }
 

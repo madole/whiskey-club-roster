@@ -27,7 +27,7 @@ class Repos extends Component {
       <div className={styles.container}>
         {this.state.userRepos.map((repo) => {
           return <Repo key={repo.id} name={repo.name} description={repo.description} homepage={repo.homepage}
-                       privateRepo={repo.private} htmlUrl={repo.html_url} />
+                       privateRepo={repo.private} htmlUrl={repo.html_url} created_at={repo.created_at} updated_at={repo.updated_at} />
         })
         }
       </div>

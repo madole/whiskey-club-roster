@@ -12,7 +12,7 @@ export function fetchUser(user) {
 
 export function fetchRepos(user) {
   return (dispatch) => {
-    return  fetch(`https://api.github.com/users/${user}/repos`)
+    return  fetch(`https://api.github.com/users/${user}/repos?per_page=100`)
       .then(res => res.json())
       .then(json => dispatch(receivedRepoData(user, json)))
   }

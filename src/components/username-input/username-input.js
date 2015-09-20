@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import ActionButton from './../action-button/action-button'
+import styles from './username-input.scss'
+
 
 class UsernameInput extends Component {
 
@@ -24,9 +26,9 @@ class UsernameInput extends Component {
     const {actions} = this.props;
     return (
       <div>
-        <input type="text" onChange={this.onChange.bind(this)} placeholder='Username' />
-        <ActionButton onClick={this.fetchUser.bind(this, actions)} buttonText='Fetch User Data' />
-        <ActionButton onClick={this.fetchRepos.bind(this, actions)} buttonText='Fetch User Repos' />
+        <input className={styles.inputBox} type="text" onChange={this.onChange.bind(this)} placeholder='Username' />
+        <ActionButton className={styles.button} onClick={this.fetchUser.bind(this, actions)} buttonText='Fetch User Data' />
+        <ActionButton className={styles.button} onClick={this.fetchRepos.bind(this, actions)} buttonText='Fetch User Repos' />
       </div>
     );
   }
