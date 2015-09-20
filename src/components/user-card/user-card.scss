@@ -1,26 +1,30 @@
+@import '../../constants/variables';
+
 .container {
     font-family: 'Helvetica';
+    display: inline-block;
 }
 .avatar {
     height: 150px;
     width: 150px;
-    border-radius: 50%;
+    border-radius: 10%;
     text-align: center;
-    border: 5px solid #fff;
-    box-shadow: 0px 0px 30px #ccc;
+    border: 5px solid $border-color;
+    box-shadow: 0px 0px 30px $shadow-color;
     transition-duration: 0.25s;
     &:hover {
         transform: scale(1.1);
-        box-shadow: 0px 0px 15px #ccc;
+        box-shadow: 0px 0px 15px $shadow-color;
     }
 }
 .keys {
     font-weight: bold;
-    color: #000474;
+    color: $text-color;
 }
 .info {
     padding: 20px;
     float: left;
+    color: $text-color;
 }
 
 .meta {

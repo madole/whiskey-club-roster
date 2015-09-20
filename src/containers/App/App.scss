@@ -1,7 +1,7 @@
+@import '../../constants/variables';
 .container {
-    background-color: white;
+    background-color: $fourth-color;
     border: 1px solid #ccc;
     display: inline-block;
-    border-radius: 25px;
     padding: 30px;
 }

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ActionButton from './action-button'
+import ActionButton from './../action-button/action-button'
 
 class UsernameInput extends Component {
 
@@ -13,9 +13,12 @@ class UsernameInput extends Component {
   }
 
   fetchUser(actions) {
-    actions.fetchUser(this.state.text)
+    actions.fetchUser(this.state.text);
   }
 
+  fetchRepos(actions) {
+    actions.fetchRepos(this.state.text);
+  }
   render() {
 
     const {actions} = this.props;
@@ -23,6 +26,7 @@ class UsernameInput extends Component {
       <div>
         <input type="text" onChange={this.onChange.bind(this)} placeholder='Username' />
         <ActionButton onClick={this.fetchUser.bind(this, actions)} buttonText='Fetch User Data' />
+        <ActionButton onClick={this.fetchRepos.bind(this, actions)} buttonText='Fetch User Repos' />
       </div>
     );
   }

@@ -4,8 +4,6 @@ import rootReducer from '../reducers';
 import { devTools } from 'redux-devtools'
 
 export default function configureStore(initalState) {
-
-
   const store = compose(
     applyMiddleware(thunk),
     devTools()

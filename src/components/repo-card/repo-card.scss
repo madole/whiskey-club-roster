@@ -1,0 +1,26 @@
+@import '../../constants/variables';
+
+.container {
+    font-family: 'Helvetica';
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: inline-block;
+    margin: 10px;
+    width: 500px;
+    height: 300px;
+    float: left;
+    &:hover {
+        background-color: $fifth-color;
+    }
+}
+.projectName {
+    text-align: center;
+    font-size: 30px;
+}
+.description {
+    text-align: center;
+    font-style: italic;
+}
+.spacer {
+    margin-bottom: 20px;
+}

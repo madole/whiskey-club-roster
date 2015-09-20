@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react';
-import Counter  from '../components/counter';
-import UsernameInput from '../components/username-input';
-import User from '../components/user';
+import UsernameInput from '../../components/username-input/username-input';
+import User from '../../components/user-card/user-card';
+import Repos from '../../components/repos/repos';
 import styles from './App.scss';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as githubActions from '../actions/actions';
+import * as githubActions from '../../actions/actions';
 
 class App extends Component {
 
@@ -15,7 +15,8 @@ class App extends Component {
     return (
       <div className={styles.container}>
         <UsernameInput actions={actions} />
-        <User store={store}/>
+        <User store={store} />
+        <Repos store={store} />
       </div>
     );
   }
