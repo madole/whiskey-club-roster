@@ -5,21 +5,17 @@ const initialState = [];
 export default function github(state = initialState, action = {}) {
   switch (action.type) {
     case GOT_USER:
-      return [{
+      return {
+        ...state,
         userData: action.userData,
         user: action.user,
-        id: state.reduce((maxId, github) => Math.max(github.id, maxId), -1) + 1
-      },
-        ...state
-      ];
+      };
     case GOT_REPOS:
-      return [{
+      return {
+        ...state,
         userRepos: action.userRepos,
-        user: action.user,
-        id: state.reduce((maxId, github) => Math.max(github.id, maxId), -1) + 1
-      },
-        ...state
-      ];
+        user: action.user
+      };
     default:
       return state;
   }

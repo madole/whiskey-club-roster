@@ -9,8 +9,8 @@
     font-size: 30px;
     border-radius: 5px;
     margin: 10px;
-    background-color: $secondary-color;
+    background-color: $tertiary-color;
     &:active {
-        background-color: $tertiary-color;
+        background-color: $secondary-color;
     }
 }

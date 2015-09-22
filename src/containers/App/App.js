@@ -15,7 +15,7 @@ class App extends Component {
     return (
       <div className={styles.container}>
         <UsernameInput actions={actions} />
-        <User store={store} />
+        <User store={store} actions={actions} />
         <Repos store={store} />
       </div>
     );

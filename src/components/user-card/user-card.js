@@ -4,17 +4,20 @@ import styles from './user-card.scss'
 class User extends Component {
   constructor(props, context) {
     super(props, context);
-    const {userData, store} = props;
+    const {userData, store, actions} = props;
 
     this.state = {userData};
+    this.actions = actions;
     store.subscribe(() => this.onChange(store))
   }
 
   onChange(store) {
     const storeState = store.getState();
-    if(storeState && storeState.github && storeState.github[0] && storeState.github[0].userData) {
-      const userData = storeState.github[0].userData;
-      this.setState({userData})
+    if(storeState && storeState.github && storeState.github && storeState.github.userData && this.user !== storeState.github.user) {
+      const userData = storeState.github.userData;
+      this.setState({userData});
+      this.actions.fetchRepos(storeState.github.user);
+      this.user = storeState.github.user;
     }
   }
 

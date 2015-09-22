@@ -12,8 +12,8 @@ class Repos extends Component {
 
   onChange(store) {
     const storeState = store.getState();
-    if(storeState && storeState.github && storeState.github[0]) {
-      const userRepos = storeState.github[0].userRepos;
+    if(storeState && storeState.github) {
+      const userRepos = storeState.github.userRepos;
       this.setState({userRepos});
     }
   }
