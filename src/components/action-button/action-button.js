@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
+import {RaisedButton} from 'material-ui';
 
 class actionButton extends Component {
 
   render() {
-    const {onClick, buttonText, className} = this.props;
+    const {onClick, buttonText, primary} = this.props;
     return (
-      <button className={className} onClick={onClick}>{buttonText}</button>
+    <RaisedButton label={buttonText} primary={primary} onTouchTap={onClick} />
     );
   }
 

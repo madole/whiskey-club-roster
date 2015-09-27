@@ -3,8 +3,11 @@ import App from './containers/App/App';
 import { Provider } from 'react-redux';
 import configureStore from './store/configure-store';
 import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import 'babel/polyfill';
 
 const store = configureStore();
+injectTapEventPlugin();
 
 React.render(
   <div>

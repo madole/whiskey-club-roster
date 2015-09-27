@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ActionButton from './../action-button/action-button'
 import styles from './username-input.scss'
+import {TextField} from 'material-ui'
 
 
 class UsernameInput extends Component {
@@ -26,9 +27,12 @@ class UsernameInput extends Component {
     const {actions} = this.props;
     return (
       <div>
-        <input className={styles.inputBox} type="text" onChange={this.onChange.bind(this)} placeholder='Username' />
-        <ActionButton className={styles.button} onClick={this.fetchUser.bind(this, actions)} buttonText='Fetch User Data' />
-        <ActionButton className={styles.button} onClick={this.fetchRepos.bind(this, actions)} buttonText='Fetch User Repos' />
+
+        <TextField
+          hintText="Username"
+          floatingLabelText="Github Username"
+          type="text" onChange={this.onChange.bind(this)} />
+        <ActionButton onClick={this.fetchUser.bind(this, actions)} primary={true} buttonText='Fetch User Data' />
       </div>
     );
   }
