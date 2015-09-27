@@ -7,8 +7,13 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as githubActions from '../../actions/actions';
 
-class App extends Component {
+import ThemeManager from 'material-ui/lib/styles/theme-manager';
+import LightRawTheme from 'material-ui/lib/styles/raw-themes/light-raw-theme';
+import materialUiMixin from '../../mixins/material-ui-mixin';
+import ReactMixin from 'react-mixin';
 
+@ReactMixin.decorate(materialUiMixin)
+class App extends Component {
   render() {
     const { github, dispatch, store } = this.props;
     const actions = bindActionCreators(githubActions, dispatch);

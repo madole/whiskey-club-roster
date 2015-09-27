@@ -12,7 +12,7 @@ class Repos extends Component {
 
   onChange(store) {
     const storeState = store.getState();
-    if(storeState && storeState.github) {
+    if (storeState && storeState.github) {
       const userRepos = storeState.github.userRepos;
       this.setState({userRepos});
     }
@@ -35,7 +35,7 @@ class Repos extends Component {
             htmlUrl={repo.html_url}
             created_at={repo.created_at}
             updated_at={repo.updated_at}
-            owner={repo.owner} />
+            owner={repo.owner}/>
         })
         }
       </div>

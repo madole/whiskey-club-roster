@@ -1,17 +1,11 @@
 @import '../../constants/variables';
 
 .container {
-    display: inline-block;
     margin: 10px;
+    max-width: 500px;
 }
-.projectName {
-    text-align: center;
-    font-size: 30px;
-}
-.description {
-    text-align: center;
-    font-style: italic;
-}
+
+
 .spacer {
     margin-bottom: 20px;
 }

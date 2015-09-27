@@ -10,6 +10,8 @@ A *new* Webpack boilerplate with:
 * Redux dev tools
 * Async Actions 
 * Redux Thunk middleware
+* Material UI
+* React-mixins (for use with ES7 Decorators)
 
 Built with **[babel-plugin-react-transform](https://github.com/gaearon/babel-plugin-react-transform)** and a few custom transforms.  
 **[Does not](https://medium.com/@dan_abramov/the-death-of-react-hot-loader-765fa791d7c4)** use React Hot Loader.

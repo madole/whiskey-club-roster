@@ -92,6 +92,7 @@ class User extends Component {
     const userData = this.getUserDataModel(this.state.userData);
 
     const tableBody = userData.map((item) => {
+      if(!item.value) {return;}
       const value = item.link ? <a href={item.value}>{item.value}</a> : item.value;
 
       return <TableRow>
@@ -100,7 +101,6 @@ class User extends Component {
         </TableRow>;
     });
 
-    console.log(tableBody);
     return (
       <div className={styles.container}>
         <div className={styles.table}>

@@ -2,7 +2,20 @@ import React, {Component} from 'react';
 import styles from './repo-card.scss'
 import FontAwesome from 'react-fontawesome'
 import moment from 'moment';
-import {Card, CardText, CardTitle, CardHeader, Avatar} from 'material-ui';
+import {
+  Card,
+  CardText,
+  CardTitle,
+  CardHeader,
+  CardActions,
+  RaisedButton,
+  Avatar,
+  Table,
+  TableBody,
+  TableRow,
+  TableRowColumn,
+  TableHeader,
+  TableHeaderColumn} from 'material-ui';
 
 class RepoCard extends Component {
   constructor(props, context) {
@@ -38,31 +51,61 @@ class RepoCard extends Component {
     };
   }
 
+  getRepoTableData(repo) {
+    if(!repo) {return [];}
+    return [{
+      name: 'Project Name',
+      value: repo.name
+    }, {
+      name: 'Private Repo',
+      value: repo.privateRepo
+    }, {
+      name: 'Repository Url',
+      value: repo.htmlUrl,
+      link: true
+    }, {
+      name: 'Created',
+      value: moment(repo.created_at).fromNow()
+    }, {
+      name: 'Updated',
+      value: moment(repo.updated_at).fromNow()
+    }, {
+      name: 'Starred',
+      value: repo.stargazers_count
+    }, {
+      name: 'Watched',
+      value: repo.watchers_count
+    }, {
+      name: 'Issues',
+      value: repo.issues_count
+    }, {
+      name: 'Homepage',
+      value: repo.homepage,
+      link: true
+    }, {
+      name: 'Owner',
+      value: repo.owner
+    }
+    ]
+  }
+
+  goToUrl(url) {
+    location.href = url;
+  }
 
   render() {
-
-    const description = (this.state.description) ?
-      <div className={styles.description}>{this.state.description}</div> : null;
-    const homepage = (this.state.homepage) ? <div><i className="material-icons">link</i> <a className={styles.link}
-                                                                                            href={this.state.homepage}>{this.state.homepage}</a>
-    </div> : null;
-    const url = (this.state.htmlUrl) ?
-      <div><FontAwesome name='github'/> <a className={styles.link} href={this.state.htmlUrl}>{this.state.htmlUrl}</a>
-      </div> : null;
-    const update = (this.state.updated_at) ? <div>Last Updated: {moment(this.state.updated_at).fromNow()}</div> : null;
-    const fakeCard = <div className={styles.container}>
-      <div className={styles.projectName}>{this.state.name} </div>
-      {description}
-      <div className={styles.spacer}></div>
-      {homepage}
-      {url}
-      <div>Created: {moment(this.state.created_at).fromNow()}</div>
-      {update}
-    </div>;
+    const repoDataModel = this.getRepoTableData(this.state);
+    const tableBody = repoDataModel.map((item) => {
+      if(!item.value) {return; }
+      const value = item.link ? <a href={item.value}>{item.value}</a> : item.value;
+      return <TableRow>
+        <TableRowColumn>{item.name}</TableRowColumn>
+        <TableRowColumn>{value}</TableRowColumn>
+      </TableRow>;
+    });
 
     return (
       <div className={styles.container}>
-
         <Card>
           <CardHeader
             title={this.state.name}
@@ -70,8 +113,21 @@ class RepoCard extends Component {
             avatar={<Avatar src={this.state.owner.avatar_url} showExpandableButton={true}/>}
             />
           <CardText>
-            {description}
+            <Table>
+              <TableHeader displaySelectAll={false}>
+                <TableRow key='header1'>
+                  <TableHeaderColumn colSpan="2" tooltip='Github user details'>
+                  </TableHeaderColumn>
+                </TableRow>
+              </TableHeader>
+              <TableBody displayRowCheckbox={false}>
+                {tableBody}
+              </TableBody>
+            </Table>
           </CardText>
+          <CardActions>
+            <RaisedButton label="View Code" onClick={() => this.goToUrl(this.state.htmlUrl)}/>
+          </CardActions>
         </Card>
       </div>
     );
