@@ -3,13 +3,13 @@ import styles from './repo-card.scss'
 import FontAwesome from 'react-fontawesome'
 import moment from 'moment';
 import {
+  Avatar,
   Card,
   CardText,
   CardTitle,
   CardHeader,
   CardActions,
   RaisedButton,
-  Avatar,
   Table,
   TableBody,
   TableRow,
@@ -20,10 +20,10 @@ import {
 class RepoCard extends Component {
   constructor(props, context) {
     super(props, context);
+
     const {
       name,
-      privateRepo,
-      htmlUrl,
+      html_url,
       description,
       created_at,
       updated_at,
@@ -33,12 +33,12 @@ class RepoCard extends Component {
       forks,
       homepage,
       owner
-      } = props;
-
+      } = props.repo;
+    const privateRepo = props.repo.private;
     this.state = {
       name,
       privateRepo,
-      htmlUrl,
+      html_url,
       description,
       created_at,
       updated_at,
@@ -61,7 +61,7 @@ class RepoCard extends Component {
       value: repo.privateRepo
     }, {
       name: 'Repository Url',
-      value: repo.htmlUrl,
+      value: repo.html_url,
       link: true
     }, {
       name: 'Created',
@@ -82,9 +82,6 @@ class RepoCard extends Component {
       name: 'Homepage',
       value: repo.homepage,
       link: true
-    }, {
-      name: 'Owner',
-      value: repo.owner
     }
     ]
   }
@@ -110,7 +107,7 @@ class RepoCard extends Component {
           <CardHeader
             title={this.state.name}
             subtitle={this.state.description}
-            avatar={<Avatar src={this.state.owner.avatar_url} showExpandableButton={true}/>}
+            avatar={<Avatar src={this.state.owner.avatar_url} />}
             />
           <CardText>
             <Table>
@@ -126,7 +123,7 @@ class RepoCard extends Component {
             </Table>
           </CardText>
           <CardActions>
-            <RaisedButton label="View Code" onClick={() => this.goToUrl(this.state.htmlUrl)}/>
+            <RaisedButton label="View Code" onClick={() => this.goToUrl(this.state.html_url)}/>
           </CardActions>
         </Card>
       </div>
