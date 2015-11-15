@@ -4,7 +4,6 @@ import { ADD_PERSON,
 
 const initialState = {};
 
-
 function getMaxId(previous, current) {
   if (previous.id > current.id) {
     return previous;
@@ -18,7 +17,7 @@ export default function mainReducer(state = initialState, action = {}) {
     case ADD_PERSON: {
       const { person } = action;
       let { cards } = state;
-      cards.push(person)
+      cards.push({...person, order: cards.length});
       return {
         ...state,
         cards
@@ -36,9 +35,16 @@ export default function mainReducer(state = initialState, action = {}) {
       const dragCard = cards[dragIndex]
       cards.splice(dragIndex, 1)
       cards.splice(hoverIndex, 0, dragCard)
+      const orderedCards = cards.map((card, i) => {
+        return {
+          ...card,
+          order: i
+        }
+      });
+
       return {
         ...state,
-        cards
+        cards: orderedCards,
       }
     }
     default:
