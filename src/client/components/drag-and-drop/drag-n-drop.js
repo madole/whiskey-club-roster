@@ -1,19 +1,22 @@
-import React, { Component } from 'react';
-import update from 'react/lib/update';
+import React, { Component, PropTypes } from 'react';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import Card from './card';
-import styles  from './styles.scss';
+import styles from './styles.scss';
 import guid from '../../utils/guid';
 
 
 @DragDropContext(HTML5Backend)
 class DragNDrop extends Component {
+  static propTypes = {
+    cards: PropTypes.object,
+    actions: PropTypes.object,
+  }
+
   constructor(props) {
     super(props);
     props.actions.getCards();
   }
-
 
   render() {
     const { cards, actions } = this.props;
@@ -28,11 +31,8 @@ class DragNDrop extends Component {
               />);
           })}
         </div>);
-    } else {
-      return (<div className={styles.LOADING}> LOADING ... </div>)
     }
-
-
+    return (<div className={styles.LOADING}> LOADING ... </div>);
   }
 }
 

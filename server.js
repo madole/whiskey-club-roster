@@ -1,12 +1,11 @@
-const path = require('path');
 const express = require('express');
 const webpack = require('webpack');
 const config = require('./webpack.config');
 const app = express();
 const env = process.env.NODE_ENV || 'development';
-const db = require('./src/server/db/connection');
+const winston = require('winston');
 
-const router = require('./src/server/router')(db);
+const router = require('./src/server/router');
 
 if (env === 'development') {
   const compiler = webpack(config);
@@ -25,9 +24,9 @@ app.use(router);
 
 app.listen(3000, 'localhost', (err) => {
   if (err) {
-    console.log(err);
+    winston.error(err);
     return;
   }
 
-  console.log('Listening at http://localhost:3000');
+  winston.info('Listening at http://localhost:3000');
 });

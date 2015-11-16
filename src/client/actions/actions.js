@@ -26,22 +26,22 @@ export function addPersonComplete(person) {
 export function addPerson(person) {
   const personDetails = {
     id: guid(),
-    text: person
+    text: person,
   };
 
   return (dispatch) => {
     return fetch('http://localhost:3000/addPerson',
-        {
-          method: 'post',
-          headers: {
-           'Accept': 'application/json',
-           'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(personDetails)
-    }).then((res) => {
-      if (res.status === 200) {
-        dispatch(addPersonComplete(personDetails));
-      }
-    });
+      {
+        method: 'post',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(personDetails),
+      }).then((res) => {
+        if (res.status === 200) {
+          dispatch(addPersonComplete(personDetails));
+        }
+      });
   };
 }

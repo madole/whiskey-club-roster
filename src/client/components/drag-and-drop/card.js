@@ -4,13 +4,6 @@ import ItemTypes from './ItemTypes';
 import { DragSource, DropTarget } from 'react-dnd';
 import styles from './styles.scss';
 
-const style = {
-  border: '1px dashed gray',
-  padding: '0.5rem 1rem',
-  marginBottom: '.5rem',
-  backgroundColor: 'white',
-  cursor: 'move',
-};
 
 const cardSource = {
   beginDrag(props) {
@@ -68,11 +61,11 @@ const cardTarget = {
 };
 
 @DropTarget(ItemTypes.CARD, cardTarget, connect => ({
-  connectDropTarget: connect.dropTarget()
+  connectDropTarget: connect.dropTarget(),
 }))
 @DragSource(ItemTypes.CARD, cardSource, (connect, monitor) => ({
   connectDragSource: connect.dragSource(),
-  isDragging: monitor.isDragging()
+  isDragging: monitor.isDragging(),
 }))
 
 export default class Card extends Component {
@@ -83,7 +76,7 @@ export default class Card extends Component {
     isDragging: PropTypes.bool.isRequired,
     id: PropTypes.any.isRequired,
     text: PropTypes.string.isRequired,
-    moveCard: PropTypes.func.isRequired
+    moveCard: PropTypes.func.isRequired,
   };
 
   render() {
@@ -91,7 +84,7 @@ export default class Card extends Component {
     const opacity = isDragging ? 0 : 1;
 
     return connectDragSource(connectDropTarget(
-      <div className={styles.CARD}>
+      <div className={styles.CARD} style={opacity}>
         {text}
       </div>
     ));

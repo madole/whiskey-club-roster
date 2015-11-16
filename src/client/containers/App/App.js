@@ -14,12 +14,12 @@ import ReactMixin from 'react-mixin';
 @ReactMixin.decorate(materialUiMixin)
 class App extends Component {
   static propTypes = {
-    store: PropTypes.object,
+    mainReducer: PropTypes.object,
     dispatch: PropTypes.func.isRequired,
   };
 
   render() {
-    const { dispatch, store, mainReducer } = this.props;
+    const { dispatch, mainReducer } = this.props;
     const { cards } = mainReducer;
 
     const boundActions = bindActionCreators(actions, dispatch);
@@ -31,7 +31,6 @@ class App extends Component {
     );
   }
 }
-
 
 function mapStateToProps(state) {
   return {
